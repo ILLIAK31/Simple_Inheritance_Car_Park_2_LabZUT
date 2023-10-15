@@ -24,14 +24,24 @@ namespace App3_Illia_Karmazin_
         }
         static void Main(string[] args)
         {
-            ICarPetrolable car_petrol_petrolgas = new CarPetrolGas();
-            ICarPetrolable car_petrol_petrolelectricity = new CarPetrolElectricity();
+            CarPetrolGas car_petrolgas = new CarPetrolGas();
+            CarPetrolElectricity car_petrolelectricity = new CarPetrolElectricity();
+
+            ICarPetrolable car_petrol_petrolgas = (ICarPetrolable)car_petrolgas;
+            //car_petrol_petrolgas.Refuel();
             Test_Drive(car_petrol_petrolgas);
+
+            ICarable car_car_petrolgas = (ICarable)car_petrol_petrolgas;
+            //car_car_petrolgas.Refuel();
+            Test_Drive(car_car_petrolgas);
+
+            
+            ICarPetrolable car_petrol_petrolelectricity = (ICarPetrolable)car_petrolelectricity;
+            //car_petrol_petrolelectricity.Refuel();
             Test_Drive(car_petrol_petrolelectricity);
 
-            ICarable car_car_petrolgas = new CarPetrolGas();
-            ICarable car_car_petrolelectricity = new CarPetrolElectricity();
-            Test_Drive(car_car_petrolgas);
+            ICarable car_car_petrolelectricity = (ICarable)car_petrol_petrolelectricity;
+            //car_car_petrolelectricity.Refuel();
             Test_Drive(car_car_petrolelectricity);
         }
     }

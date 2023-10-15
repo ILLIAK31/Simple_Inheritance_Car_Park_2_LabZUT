@@ -11,7 +11,6 @@ namespace App3_Illia_Karmazin_
         private bool Refuel_status_petrol = false;
         private bool Refuel_status_electricity = false;
         private bool Engine_status = false;
-        private string car_type;
         public void Run()
         {
             if (Engine_status)
@@ -38,16 +37,28 @@ namespace App3_Illia_Karmazin_
         }
         public void Refuel()
         {
-            if (Refuel_status_petrol || Refuel_status_electricity)
+            if (Refuel_status_petrol && Refuel_status_electricity)
             {
-                Console.WriteLine("Car already refueled petrol-electricity\n");
+                Console.WriteLine("Car already refueled petrol and electricity\n");
             }
             else
             {
-                car_type = "petrol-electricity";
-                Console.WriteLine("Refuels petrol and electricity\n");
-                Refuel_status_petrol = true;
-                Refuel_status_electricity = true;
+                if (Refuel_status_petrol == false && Refuel_status_electricity == false)
+                {
+                    Console.WriteLine("Refuels petrol and electricity\n");
+                    Refuel_status_petrol = true;
+                    Refuel_status_electricity = true;
+                }
+                else if(!Refuel_status_petrol)
+                {
+                    Console.WriteLine("Refuels petrol\n");
+                    Refuel_status_petrol = true;
+                }
+                else
+                {
+                    Console.WriteLine("Refuels electricity\n");
+                    Refuel_status_electricity = true;
+                }
             }
         }
         public void Drive()
@@ -69,7 +80,7 @@ namespace App3_Illia_Karmazin_
                 }
                 else
                 {
-                    Console.WriteLine("None " + car_type + " refuel\n");
+                    Console.WriteLine("None petrol and electricity refuel\n");
                 }
             }
             else

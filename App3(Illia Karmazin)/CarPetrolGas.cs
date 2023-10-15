@@ -11,7 +11,6 @@ namespace App3_Illia_Karmazin_
         private bool Refuel_status_petrol = false;
         private bool Refuel_status_gas = false;
         private bool Engine_status = false;
-        private string car_type;
         public void Run()
         {
             if (Engine_status)
@@ -38,16 +37,28 @@ namespace App3_Illia_Karmazin_
         }
         public void Refuel()
         {
-            if (Refuel_status_petrol || Refuel_status_gas)
+            if (Refuel_status_petrol && Refuel_status_gas)
             {
-                Console.WriteLine("Car already refueled petrol-gas\n");
+                Console.WriteLine("Car already refueled petrol and gas\n");
             }
             else
             {
-                car_type = "petrol-gas";
-                Console.WriteLine("Refuels petrol and gas\n");
-                Refuel_status_petrol = true;
-                Refuel_status_gas = true;
+                if (Refuel_status_petrol == false && Refuel_status_gas == false)
+                {
+                    Console.WriteLine("Refuels petrol and gas\n");
+                    Refuel_status_petrol = true;
+                    Refuel_status_gas = true;
+                }
+                else if (!Refuel_status_petrol)
+                {
+                    Console.WriteLine("Refuels petrol\n");
+                    Refuel_status_petrol = true;
+                }
+                else
+                {
+                    Console.WriteLine("Refuels gas\n");
+                    Refuel_status_gas = true;
+                }
             }
         }
         public void Drive()
@@ -69,7 +80,7 @@ namespace App3_Illia_Karmazin_
                 }
                 else
                 {
-                    Console.WriteLine("None " + car_type + " refuel\n");
+                    Console.WriteLine("None petrol and gas refuel\n");
                 }
             }
             else
