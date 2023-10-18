@@ -11,8 +11,6 @@ namespace App3_Illia_Karmazin_
         static void Test_Drive(ICarable car)
         {
             Console.WriteLine("Test drive starting :");
-            car.Refuel();
-            car.Refuel();
             car.Drive();
             car.Run();
             car.Run();
@@ -24,25 +22,23 @@ namespace App3_Illia_Karmazin_
         }
         static void Main(string[] args)
         {
-            CarPetrolGas car_petrolgas = new CarPetrolGas();
-            CarPetrolElectricity car_petrolelectricity = new CarPetrolElectricity();
+            ICarPetrolable car_petrol_petrolgas = new CarPetrolGas();
+            ICarPetrolable car_petrol_petrolelectricity = new CarPetrolElectricity();
 
-            ICarPetrolable car_petrol_petrolgas = (ICarPetrolable)car_petrolgas;
-            //car_petrol_petrolgas.Refuel();
+            car_petrol_petrolgas.Refuel_petrol();
             Test_Drive(car_petrol_petrolgas);
 
-            ICarable car_car_petrolgas = (ICarable)car_petrol_petrolgas;
-            //car_car_petrolgas.Refuel();
+            car_petrol_petrolelectricity.Refuel_petrol();
+            Test_Drive(car_petrol_petrolelectricity);
+            
+            ICarable car_car_petrolgas = new CarPetrolGas();
+            ICarable car_car_petrolelectricity = new CarPetrolElectricity();
+
+            car_car_petrolgas.Refuel();
             Test_Drive(car_car_petrolgas);
 
-            
-            ICarPetrolable car_petrol_petrolelectricity = (ICarPetrolable)car_petrolelectricity;
-            //car_petrol_petrolelectricity.Refuel();
-            Test_Drive(car_petrol_petrolelectricity);
-
-            ICarable car_car_petrolelectricity = (ICarable)car_petrol_petrolelectricity;
-            //car_car_petrolelectricity.Refuel();
-            Test_Drive(car_car_petrolelectricity);
+            car_car_petrolelectricity.Refuel();
+            Test_Drive(car_car_petrolelectricity);            
         }
     }
 }

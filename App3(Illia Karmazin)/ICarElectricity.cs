@@ -8,9 +8,6 @@ namespace App3_Illia_Karmazin_
 {
     interface ICarElectricity : ICarable
     {
-        void Run();
-        void Turn_Off();
-        void Refuel();
-        void Drive();
+        void Refuel_electricity();
     }
 }

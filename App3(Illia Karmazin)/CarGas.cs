@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App3_Illia_Karmazin_
 {
-    internal class CarGas : ICarable , ICarGasable
+    internal class CarGas : ICarGasable
     {
         private bool Refuel_status = false;
         private bool Engine_status = false;
@@ -35,19 +35,6 @@ namespace App3_Illia_Karmazin_
                 Console.WriteLine("Engine is turned off\n");
             }
         }
-        public void Refuel()
-        {
-            if (Refuel_status)
-            {
-                Console.WriteLine("Car already refueled gas\n");
-            }
-            else
-            {
-                car_type = "gas";
-                Console.WriteLine("Refuels gas\n");
-                Refuel_status = true;
-            }
-        }
         public void Drive()
         {
             if (Engine_status)
@@ -65,6 +52,23 @@ namespace App3_Illia_Karmazin_
             else
             {
                 Console.WriteLine("Car is not running\n");
+            }
+        }
+        public void Refuel()
+        {
+            Refuel_gas();
+        }
+        public void Refuel_gas()
+        {
+            if (Refuel_status)
+            {
+                Console.WriteLine("Car already refueled gas\n");
+            }
+            else
+            {
+                car_type = "gas";
+                Console.WriteLine("Refuels gas\n");
+                Refuel_status = true;
             }
         }
     }

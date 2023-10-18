@@ -10,7 +10,7 @@ namespace App3_Illia_Karmazin_
     {
         void Run();
         void Turn_Off();
-        void Refuel();
         void Drive();
+        void Refuel();
     }
 }
